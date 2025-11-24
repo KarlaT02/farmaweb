@@ -3,27 +3,65 @@
 import React, { useState } from 'react';
 import "./Auth.css"; // Importa los estilos comunes
 import { Link } from 'react-router-dom';
+import { supabase } from "../supabaseClient";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = ({ isEmbedded = false}) => {
-  // 🛑 SE AÑADE: Estado para controlar si la contraseña es visible (true) o no (false)
+  
+  const [rememberMe, setRememberMe] = useState(true);
+  //Estado para capturar los valores del formulario
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
+  //Estado para controlar si la contraseña es visible (true) o no (false)
   const [showPassword, setShowPassword] = useState(false);
 
 
-  // 🛑 SE AÑADE: Función para cambiar el estado de visible/oculto
+  //Función para cambiar el estado de visible/oculto
   const togglePasswordVisibility = () => {
     setShowPassword(prevShowPassword => !prevShowPassword);
   };
 
+  const navigate = useNavigate();
+
   // Función simulada para manejar el envío
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Intento de inicio de sesión...');
-    // Aquí iría la lógica de autenticación real
+    setError(null);
+
+    const persistence = rememberMe ? 'session' : 'temporary';
+
+    console.log("Enviando Email:", email);
+    console.log("Enviando Password:", password);
+
+    // 1. Llamar al método de inicio de sesión de Supabase
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    }, {
+          //Pasar opcion de persistencia
+          shouldRemember: persistence === 'session' ? true : false,
+    });
+
+    // 2. Manejar la respuesta
+    if (error) {
+      //Mostrar un error legible al usuario
+      setError("Error: Credenciales inválidas o cuenta no verificada");
+      console.error("Error de Supabase:", error);
+    } else if (data.user) {
+      //login exitoso supabase guarda el token
+      console.log("Usuario logeado:", data.user);
+      //redirige al usuario a la pagina principal
+      navigate("/");
+    }
+
+
   };
 
   return (
-      <form className="auth-form" onSubmit={handleSubmit}>
+      <form className="auth-form" onSubmit={handleLogin}>
         {/* 🛑 Ocultar el h2 si está incrustado y ya hay un título general */}
         {!isEmbedded && <h2>Iniciar Sesión</h2>}
         
@@ -35,7 +73,10 @@ const Login = ({ isEmbedded = false}) => {
             id="login-email" 
             name="email" 
             placeholder="ejemplo@correo.com" 
-            required 
+            required
+              //se añade: conexión al estado
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
           />
         </div>
 
@@ -48,8 +89,12 @@ const Login = ({ isEmbedded = false}) => {
               id="login-password" 
               name="password" 
               placeholder="Introduce tu contraseña" 
-              required 
+              required
+              //añade conexion al estado
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
+
             {/* Aquí puedes añadir el botón "Mostrar" contraseña si lo deseas */}
             <button 
               type="button" 
@@ -61,11 +106,20 @@ const Login = ({ isEmbedded = false}) => {
           </div>
         </div>
 
+        {/* Mensaje de error (debajo de los campos) */}
+        {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: '15px' }}>{error}</p>}
+
         {/* Contenedor Flex para alinear Recordarme e INGRESAR horizontalmente */}
 
           {/* Checkbox Recordarme */}
           <div className="form-group remember-me-group">
-            <input type="checkbox" id="remember-me" name="rememberMe" />
+            <input 
+              type="checkbox" 
+              id="remember-me" 
+              name="rememberMe"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
             <label htmlFor="remember-me">Recordarme</label>
           </div>
 

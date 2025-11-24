@@ -28,19 +28,15 @@ const Cart = ({ items, onUpdateQuantity, onRemove }) => {
           <table className="cart-table">
             <thead>
               <tr>
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Total</th>
-                <th></th> {/* Columna de acción */}
+                <th>Producto</th><th>Precio</th><th>Cantidad</th><th>Total</th><th></th>
               </tr>
             </thead>
             <tbody>
               {items.map(item => (
                 <tr key={item.id} className="cart-item-row">
-                  <div className="item-text">
+                  <td className="item-text">
                     <span>{item.name}</span>
-                  </div>
+                  </td>
                   <td className="item-details">
                     <img src={item.image} alt={item.name} className="item-thumbnail" />
                   </td>

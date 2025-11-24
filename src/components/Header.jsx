@@ -7,7 +7,45 @@ import "./Header.css"
 // src/components/Header.jsx (Estructura Corregida para Escritorio)
 
 
-const Header = ({ cartItemCount = 0 }) => {
+const Header = ({ cartItemCount = 0, session, onLogout }) => {
+
+  const renderAccountStatus = () => {
+    if (session) {
+      
+      // USUARIO LOGEADO: Muestra Nombre y Opción de Cerrar Sesión
+      const rawName = session.user?.user_metadata?.full_name || session.user.email;
+      const firstName = rawName.split(' ')[0];
+
+      return(
+        <div className="nav-item account-item logged-in">
+          <img src="/images/cuenta.png" alt="Icono de cuenta" className="nav-icon"/>
+          <div className="account-text-container">
+              <span className="account-welcome">Hola, {firstName}!</span>
+              <span
+                className="account-link logout-link"
+                onClick={onLogout} // 🛑 Llama a la función de cierre de sesión
+              >
+                Cerrar Sesión
+              </span>
+          </div>
+        </div>
+      );
+    } else {
+
+      // 🛑 USUARIO NO LOGEADO: Muestra el enlace a Login/Registro
+      return (
+        <Link to={"/login"} className="nav-item account-item">
+          <img src="/images/cuenta.png" alt="Icono de cuenta" className="nav-icon"/>
+          <div className="account-text-container">
+            <span className="account-welcome">¡Bienvenido</span>
+            <span className="account-link">Regístrate / Identifícate</span>
+          </div>
+        </Link>
+      );
+    }
+  };
+
+  ///logica confidicional para la cuenta
   return (
     <header className="main-header">
       
@@ -25,14 +63,9 @@ const Header = ({ cartItemCount = 0 }) => {
 
       {/* 2. NAVEGACIÓN (Segundo elemento, justo después del logo) */}
       <nav className="header-nav">
-        {/* Link de la Cuenta */}
-        <Link to={"/login"} className="nav-item account-item">
-          <img src="/images/cuenta.png" alt="Icono de cuenta" className="nav-icon"/>
-          <div className="account-text-container">
-            <span className="account-welcome">¡Bienvenido</span>
-            <span className="account-link">Regístrate / Identifícate</span>
-          </div>
-        </Link>
+
+        {renderAccountStatus()}
+
         {/* Link del Carrito */}
         <Link to={"/carrito"} className="nav-item cart-item-full">
           <div className="cart-icon-container">

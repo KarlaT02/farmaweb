@@ -1,0 +1,209 @@
+/* src/components/ProductDetail.css */
+
+.product-detail-page-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* --- 1. SECCIÓN SUPERIOR --- */
+.top-section-wrapper {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* Responsividad */
+}
+
+/* Lado Izquierdo (Imagen) */
+.image-gallery {
+    flex-shrink: 0;
+    width: 350px;
+    text-align: center;
+}
+.main-product-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+/* Lado Derecho (Compra) */
+.purchase-info {
+    flex-grow: 1;
+}
+
+.product-title {
+    text-decoration: none;
+    color: #0d47a1;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* Caja de Precio */
+.price-box {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.regular-price-label {
+    font-size: 0.9em;
+    color: #666;
+    display: block;
+}
+.regular-price-value {
+    text-decoration: line-through;
+    color: #a00;
+    font-size: 1.1em;
+    display: block;
+}
+.current-price-value {
+    color: #a00; /* Color de precio de oferta */
+    font-size: 2.5em;
+    margin-top: 5px;
+}
+.discount-info {
+    color: #008000;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+}
+
+/* Controles de Cantidad */
+
+.quantity-controls-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 120px;
+}
+
+.quantity-btn{
+    background-color: #f0f0f0;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1,2em;
+    height: 100%;
+}
+
+.quantity-btn:disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+    color: #bbb;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background-color: #ddd;
+}
+
+
+.action-buttons-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+.quantity-input {
+    width: 60px;
+    border: none;
+    padding: 8px 0;
+    font-size: 1em;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+
+.quantity-input:focus {
+    outline: none;
+}
+
+.btn-add-to-cart-detail {
+    background-color: #0d47a1; /* Azul de botón principal */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* --- 2. SECCIÓN INFERIOR --- */
+
+.bottom-section-tabs {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+.tabs-header {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #eee;
+}
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+.tab-button.active {
+    border-bottom-color: #0d47a1;
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+.tab-content-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+.benefits-section {
+    flex-grow: 2;
+}
+.benefits-list {
+    list-style: disc;
+    padding-left: 20px;
+    font-size: 1em;
+}
+
+.details-sidebar {
+    flex-grow: 1;
+    max-width: 300px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+}
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    cursor: pointer;
+}
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Ajustes */
+@media (max-width: 768px) {
+    .top-section-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .image-gallery {
+        width: 100%;
+        max-width: 300px;
+    }
+    .tab-content-wrapper {
+        flex-direction: column;
+    }
+    .details-sidebar {
+        max-width: 100%;
+    }
+}

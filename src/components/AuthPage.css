@@ -1,0 +1,124 @@
+/* src/components/AuthPage.css */
+
+.auth-page-container {
+  padding: 40px 20px;
+  background-color: #f0f4f7;
+  min-height: calc(100vh - 80px); /* Ajusta para el header */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido si hay espacio extra */
+}
+
+.auth-page-title {
+  font-size: 2.5em;
+  color: #1a237e;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+  max-width: 1000px; /* Limita el ancho del título */
+}
+
+.auth-forms-wrapper {
+  display: flex; /* Habilita Flexbox para las columnas */
+  gap: 30px; /* Espacio entre las columnas */
+  max-width: 1000px; /* Ancho máximo para el contenedor de los formularios */
+  width: 100%;
+  justify-content: center; /* Centra las columnas si no ocupan todo el ancho */
+  flex-wrap: wrap; /* Permite que las columnas se apilen en pantallas pequeñas */
+  align-items: flex-start;
+}
+
+.auth-form-column {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  flex: 1; /* Permite que las columnas crezcan y se encojan */
+  min-width: 350px; /* Ancho mínimo antes de apilarse */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* padding y border incluidos en el width */
+}
+
+.column-title {
+  font-size: 1.8em;
+  color: #0d47a1;
+  margin-bottom: 25px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.required-fields-note {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 15px;
+  display: block; /* Para que ocupe su propia línea */
+}
+
+/* src/components/AuthPage.css (Añadir o modificar) */
+
+/* Contenido del panel */
+.registration-panel {
+    width: 100%;
+    /* Asegura que el título "Cliente nuevo" se muestre correctamente */
+}
+
+/* Título de la columna (usado en el nuevo RegisterPanel) */
+.column-title {
+    font-size: 1.8em;
+    color: #0d47a1; /* Azul prominente */
+    margin-bottom: 20px;
+    padding-bottom: 0; /* Eliminar el borde inferior si ya no se usa */
+}
+
+.registration-subtitle {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Lista de Beneficios */
+.benefits-list {
+    list-style-type: none; /* Eliminar viñetas */
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+.benefits-list li {
+    font-size: 1.1em;
+    padding: 5px 0;
+    color: #555;
+    /* 🛑 Opcional: Icono de marca de verificación (checkmark) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234CAF50" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 25px; /* Espacio para el icono */
+}
+
+/* Sección de Botón y CTA */
+.registration-cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.cta-text {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Estilo para el botón CREAR UNA CUENTA */
+.create-account-btn {
+    background: white; /* Botón de fondo blanco */
+    color: #4CAF50; /* Texto verde */
+    border: 2px solid #4CAF50; /* Borde verde */
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px 20px;
+    width: auto; /* Ancho automático, no 100% */
+}
+.create-account-btn:hover {
+    background: #f0f0f0;
+}

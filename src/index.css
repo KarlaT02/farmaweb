@@ -1,0 +1,12 @@
+
+/* src/index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif; /* Fuente legible y accesible */
+}
+body {
+  font-size: 18px; /* Tamaño base grande */
+  background-color: #f8f9fa;
+}

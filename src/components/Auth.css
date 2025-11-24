@@ -1,0 +1,262 @@
+/* src/components/Auth.css */
+
+/* Ajustes generales del formulario incrustado */
+.auth-form {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+.auth-form h2 {
+  font-size: 2.2em;
+  color: #1a237e;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+.form-group label {
+  font-size: 1em;
+  color: #444;
+  font-weight: bold;
+}
+
+.form-group input {
+  display: flex;
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #bdbdbd;
+  border-radius: 8px;
+  font-size: 1em; /* Inputs grandes para fácil uso */
+}
+
+.required-star {
+  color: #ef5350;
+}
+
+/* Botón "Mostrar" contraseña */
+.form-group {
+  position: relative;
+}
+
+.show-password-btn{
+  position: static;
+  transform: none;
+  background: none;
+  border: none;
+  color: #2196f3;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+/* Grupo de "Recordarme" */
+.remember-me-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0px;
+}
+
+.remember-me-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.remember-me-group label{
+  font-weight: normal;
+  font-size: 1em;
+  color: #444;
+}
+
+.fogot-password-link {
+  text-align: right;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+}
+
+.fogot-password-link a {
+  color: #2196f3;
+}
+
+.fogot-password-link a:hover{
+  text-decoration: underline;
+}
+
+/* Botones de Acción (INGRESAR, CREAR CUENTA, Cancelar) */
+
+
+.full-width-btn {
+  width: 100% !important;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.auth-submit-button {
+  padding: 15px;
+  background-color: #4caf50; /* Verde para la acción principal */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.auth-submit-button:hover {
+  background-color: #388e3c;
+}
+
+.main-action-btn {
+  background-color: #4caf50;
+}
+
+.main-action-btn:hover {
+  background-color: #388e3c;
+}
+
+.auth-submit-button:not(.google-login-btn) {
+  width: 100%;
+  min-width: unset;
+}
+
+.input-with-button {
+  display: flex;
+  align-items: center;
+  border: 2px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.input-with-button input {
+  flex-grow: 1;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 0;
+}
+
+/* Botón de Google */
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  background-color: #f2f2f2;
+  color: #444;
+  border: 1px solid #ccc;
+}
+
+.google-login-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.google-icon {
+  padding: 1px;
+  width: 40px;
+  height: 40px;
+}
+
+/* Mensajes de ayuda de contraseña */
+.password-hint, .password-match-hint {
+  font-size: 0.85em;
+  color: #777;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.forgot-password-link {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+
+/* Grupo de Términos y Condiciones */
+.terms-conditions-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.terms-conditions-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+
+.terms-conditions-group label {
+  font-size: 0.9em;
+  color: #444;
+}
+
+.terms-conditions-group a {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+.terms-conditions-group a:hover {
+  text-decoration: underline;
+}
+
+/* Contenedor de botones Cancelar/Crear Cuenta */
+.register-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: none;
+  padding: 40px;
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-actions .auth-submit-button{
+  width: auto/* Para que el botón no ocupe todo el ancho */;
+}
+
+
+/* Responsive Design para AuthPage */
+@media (max-width: 850px) {
+  .auth-form-wrapper {
+    flex-direction: column; /* Apila las columnas en pantallas pequeñas */
+    gap: 20px;
+  }
+}
+
+.auth-form-column {
+  min-width: unset; /* Permite que la columna ocupe el 100% del ancho disponible */
+}
+
+.auth-switch-link {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1em;
+  color: #616161;
+}
+
+.auth-switch-link a {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-switch-link a:hover {
+  text-decoration: underline;
+}

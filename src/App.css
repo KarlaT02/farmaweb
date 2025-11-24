@@ -1,0 +1,102 @@
+/* src/App.css */
+
+.app-container {
+  min-height: 100vh; 
+  background-color: #f8f9fa; /* Fondo muy claro */
+}
+
+/* --- Estilos de la Sección Principal --- */
+.main-layout {
+  padding: 40px 30px;
+  max-width: 1400px; 
+  margin: 0 auto; 
+}
+
+.main-layout h2 {
+    font-size: 2em;
+    color: #0d47a1;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #bbdefb;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* --- Estilos de la Lista de Productos (Grid) --- */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 25px; 
+}
+
+/* --- Estilos de la Tarjeta de Producto --- */
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-image-container {
+    width: 100%;
+    height: 150px; /* Altura fija para mantener el grid uniforme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    overflow: hidden; /* Asegura que la imagen no se desborde */
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin cortarla */
+    border-radius: 5px;
+}
+
+.product-card .product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.product-card .product-link h3 {
+  font-size: 1.6em;
+  color: black;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.product-card .product-link:hover h3 {
+  color: #0d47a1;
+}
+
+.product-description {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 15px;
+}
+.product-price {
+  font-size: 1.5em;
+  color: #1a237e;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.btn-add-to-cart {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+}
+.btn-add-to-cart:hover {
+  background-color: #388e3c;
+}

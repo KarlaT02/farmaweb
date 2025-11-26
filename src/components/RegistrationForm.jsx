@@ -78,7 +78,7 @@ const RegistrationForm = ({ isEmbedded = false, onCancel }) => {
         
         {/* Campo de Nombre Completo */}
         <div className="form-group">
-          <label htmlFor="register-name">Nombre:<span className="required-star">*</span></label> {/* 🛑 ID ÚNICO */}
+          <label htmlFor="register-name">Nombre:<span className="required-star">*</span></label> {/* ID ÚNICO */}
           <input 
             type="text" 
             id="register-name" 

@@ -56,7 +56,34 @@ const Login = ({ isEmbedded = false}) => {
       //redirige al usuario a la pagina principal
       navigate("/");
     }
+  }
+  
+    //Funcion para inicio de sesion con GOOGLE
+    const handleGoogleLogin = async () => {
+      setError(null); // Limpiamos errores anteriores
 
+      // La persistencia es opcional, pero ayuda a mantener la sesión
+      const persistence = rememberMe ? 'session' : 'temporary';
+
+      const { error } = await supabase.auth.signInWithOAuth({
+        //Especificar el proovedor
+        provider: "google",
+        options: {
+          ///Definir URL de redirección
+          //Supabase necesita saber al donde devolver al usuario
+          redirectTo: window.location.origin + '/',
+          /// Establecer persistencia
+          redirectTo: window.location.origin + '/',
+          redirectTo: window.location.origin + '/'
+        }
+        
+      });
+
+    if (error) {
+      console.error("Error al iniciar sesión con Google:", error);
+      setError("Error al contactar con Google. Intente nuevamente.");
+    }
+    //Si es exitoso realiza la redireccion auto
 
   };
 
@@ -133,14 +160,17 @@ const Login = ({ isEmbedded = false}) => {
             INGRESAR
           </button>
 
-
-        {/* Botón de Google+ */}
-        <button type="button" className="auth-submit-button google-login-btn">
-          <img src="/images/google.png" alt="Google" className="google-icon"/>INGRESAR CON GOOGLE+
-        </button>
-
+          {/* Botón de Google+ */}
+          <button
+            type="button"
+            className="auth-submit-button google-login-btn"
+            onClick={handleGoogleLogin}
+          >
+            <img src="/images/google.png" alt="Google" className="google-icon"/>INGRESAR CON GOOGLE
+          </button>
         
-        {/* 🛑 Ocultar el enlace de "No tienes cuenta" si está incrustado */}
+        {/*  Ocultar el enlace de "No tienes cuenta" si está incrustado */}
+
         {!isEmbedded && (
           <p className="auth-switch-link">
             ¿No tienes cuenta? <a href="/registro">Regístrate aquí</a>

@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css"
 
@@ -8,6 +8,11 @@ import "./Header.css"
 
 
 const Header = ({ cartItemCount = 0, session, onLogout }) => {
+
+  //controla el menu desplegable esta abierto
+
+  const [showMenu, setShowMenu] = useState(false);
+  const toggleMenu = () => setShowMenu(prev => !prev);
 
   const renderAccountStatus = () => {
     if (session) {
@@ -17,19 +22,40 @@ const Header = ({ cartItemCount = 0, session, onLogout }) => {
       const firstName = rawName.split(' ')[0];
 
       return(
-        <div className="nav-item account-item logged-in">
+        <div className="nav-item account-item logged-in" onClick={toggleMenu}>
           <img src="/images/cuenta.png" alt="Icono de cuenta" className="nav-icon"/>
+
+          {/* 🛑 PANEL DESPLEGABLE (Visible solo cuando showMenu es true) */}
+          {showMenu && (
+            <div className="account-dropdown">
+              <span className="dropdown-title">Hola, {firstName}!</span>
+              <span 
+                className="dropdown-link logout-link"
+                onClick={(e) =>{
+                  e.stopPropagation();
+                  onLogout();
+                }}
+              > 
+                Cerrar Sesion 
+              </span>
+            </div>
+          )}
+
           <div className="account-text-container">
               <span className="account-welcome">Hola, {firstName}!</span>
               <span
                 className="account-link logout-link"
-                onClick={onLogout} // 🛑 Llama a la función de cierre de sesión
+                onClick={(e) =>{
+                  e.stopPropagation(); ///evita que el clic abra/cierre el menu
+                  onLogout();
+                }}
               >
                 Cerrar Sesión
               </span>
           </div>
         </div>
       );
+
     } else {
 
       // 🛑 USUARIO NO LOGEADO: Muestra el enlace a Login/Registro

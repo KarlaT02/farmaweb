@@ -1,9 +1,9 @@
-/* src/App.css (Estilos Base - Escritorio) */
+/* src/Header.css (Estilos Base - Escritorio) */
 
 /* --- Estructura Principal del Header --- */
 .main-header {
   display: flex;
-  justify-content: center; /* Espacia logo, búsqueda y nav */
+  justify-content: flex-start; /* Espacia logo, búsqueda y nav */
   align-items: center;
   padding: 15px 30px;
   background-color: #e3f2fd; 
@@ -43,7 +43,6 @@
 
 .header-search {
     position: relative;
-
     display: flex;
     flex-grow: 1;
     flex-basis: 0;
@@ -124,6 +123,42 @@
   display: block;
 }
 
+.nav-item .account-item{
+  position: relative;
+  z-index: 100;
+}
+
+.account-dropdown {    
+  display: none;
+  /* Diseño del Panel */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  min-width: 18px;
+  padding: 10px;
+
+  flex-direction: column;
+}
+
+.dropdown-title {
+  color: black;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-link {
+  text-decoration: none;
+  color: #444;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  font-size: 0.95em;
+}
+
+
+
 
 
 /* Estilo para el Badge del Carrito */
@@ -182,6 +217,14 @@
 
   /* --- 1. Logo y Marca (Centrado) --- */
   
+  .header-brand {
+    order: 1;
+    width: 100%;
+    /* 🛑 Centrar el contenido del logo en el ancho completo */
+    display: flex; 
+    justify-content: center;
+  }
+  
   .header-brand .text-logo {
     font-size: 1em;
     font-weight: bold;
@@ -198,7 +241,6 @@
     /* 🛑 Centra el logo y texto dentro del 100% de ancho */
   }
 
-
   .header-brand .header-logo {
     cursor: pointer;
     max-height: 80px; /* Reducción de tamaño */
@@ -211,16 +253,20 @@
     align-items: center;
     order: 2;
     width: 100%;
-    justify-content: flex-end; /* Distribuye uniformemente los iconos */
-    gap: 10px;
-    margin-top: -50px;
+    justify-content: center; /* Distribuye uniformemente los iconos */
+    margin-top: 10px;
+  }
+
+  .nav-item.account-item.logged-in .account-dropdown {
+    /* 🛑 CRÍTICO: Sobreescribir el display: none; de la regla base */
+    display: flex; 
+    /* El resto de estilos de posición absoluta/top/right lo mantendrán en su lugar */
   }
   
   /* Ocultar texto y alinear solo el icono */
   .account-text-container, .cart-text {
-      display: none; /* 🛑 Ocultar texto en móvil */
+      display: none !important;/* 🛑 Ocultar texto en móvil */
   }
-
 
   .nav-item {
       justify-content: center; /* Centra el icono en su propia porción */
@@ -232,7 +278,21 @@
       max-width: 40px; /* Asegura un buen tamaño */
       max-height: 40px;
   }
+
+  .account-text-container, .cart-text {
+    display: none;
+  }
+
+  .logout-link {
+    color: #1a237e; /* Rojo para la acción de logout */
+    font-weight: bold;
+  }
   
+  .logout-link:hover {
+    color: #2196f3; /* Rojo para la acción de logout */
+    font-weight: bold;
+  }
+
   /* --- Barra de Búsqueda (Ancho Completo) --- */
   .header-search { 
     /* Colocado en la parte inferior */

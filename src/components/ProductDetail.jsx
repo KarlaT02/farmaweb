@@ -1,25 +1,24 @@
-// src/components/ProductDetail.jsx
 
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom'; //  NECESARIO: Usamos useParams para obtener el ID
-import './ProductDetail.css'; // 🛑 Crear este CSS en el siguiente paso
+import { useParams, Link } from 'react-router-dom'; //useParams para obtener el ID
+import './ProductDetail.css';
 
 const ProductDetail = ({ products, onAddToCart }) => {
-  // OBTENER ID: Capturamos el ID de la URL
+  // Obtener el ID
   const { id } = useParams();
   
-  // Convertir el ID de la URL (string) a número para la búsqueda
+  // Convertierte el ID de la URL a número para la búsqueda
   const productId = parseInt(id); 
 
-  // BUSCAR PRODUCTO: Encontrar el producto en el mock
+  // Buscar productos en el mock
   const product = products.find(p => p.id === productId);
 
     //Estado para la cantidad seleccionada por el usuario (por defecto: 1)
   const [quantity, setQuantity] = useState(1)
 
-    // 🛑 SE AÑADE: Función que llama a la función global con la cantidad
+    // Función que llama a la función global con la cantidad
     const handleAddToCart = () => {
-        // Llama a la función global 'onAddToCart' (de App.jsx) y le pasa la cantidad.
+        // Llama a la función global "onAddToCart" y le pasa la cantidad.
         onAddToCart(product, quantity);
     };
 
@@ -32,23 +31,22 @@ const ProductDetail = ({ products, onAddToCart }) => {
            </div>;
   }
 
-  // Lógica de precio y ahorro (ejemplo)
+  // Lógica de precio y "Ahorro"
   const regularPrice = product.price * 1.2; // Simula un precio regular más alto
   const discountAmount = regularPrice - product.price;
 
   return (
     <div className="product-detail-page-container">
       
-      {/* 1. SECCIÓN SUPERIOR: IMAGEN, PRECIO Y BOTONES */}
+      {/* 1. seccion superior (imagen, precio y botones) */}
       <div className="top-section-wrapper">
         
-        {/* Lado Izquierdo: Galería de Imágenes (Simple) */}
+        {/*Galería de Imágenes */}
         <div className="image-gallery">
           <img src={product.image} alt={product.name} className="main-product-image" />
-          {/* Aquí iría la galería de thumbnails si fuera más complejo */}
         </div>
 
-        {/* Lado Derecho: Información de Compra */}
+        {/*Información de Compra */}
         <div className="purchase-info">
           
           <h1 className="product-title">{product.name}</h1>
@@ -68,14 +66,14 @@ const ProductDetail = ({ products, onAddToCart }) => {
             </span>
           </div>
 
-          {/* Controles de Cantidad y Botón */}
+          {/* Controles de Cantidad y Boton */}
           <div className="action-buttons-group">
 
-            {/* 🛑 SE MODIFICA: Controles de cantidad con botones externos */}
+            {/* Controles de cantidad con botones externos */}
             <div className="quantity-controls-wrapper">
                 <button
                     className="quantity-btn decrement"
-                    onClick={() => setQuantity(prev => Math.max(1, prev - 1))} // 🛑 FUNCIÓN DE DECREMENTO
+                    onClick={() => setQuantity(prev => Math.max(1, prev - 1))} // funcion de decremento
                     disabled={quantity <= 1} // Deshabilita el botón si la cantidad es 1
                 >
                     -
@@ -88,7 +86,7 @@ const ProductDetail = ({ products, onAddToCart }) => {
                 />
                 <button 
                     className='quantity-btn increment'
-                    onClick={() => setQuantity(prev => prev + 1)} // 🛑 FUNCIÓN DE INCREMENTO>
+                    onClick={() => setQuantity(prev => prev + 1)} //funcion de incremento
                 >
                     +
                 </button>
@@ -101,14 +99,11 @@ const ProductDetail = ({ products, onAddToCart }) => {
               Agregar al Carrito
             </button>
           </div>
-          
-          <p className="delivery-note">
-            Para conocer la disponibilidad del producto ingresa tu código postal.
-          </p>
+
         </div>
       </div>
       
-      {/* 2. SECCIÓN INFERIOR: DESCRIPCIÓN Y DETALLES */}
+      {/* 2. seccion abajo: descripcion y detalles */}
       <div className="bottom-section-tabs">
         
         <div className="tabs-header">

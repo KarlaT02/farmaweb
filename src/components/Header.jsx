@@ -4,9 +4,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css"
 
-// src/components/Header.jsx (Estructura Corregida para Escritorio)
-
-
 const Header = ({ cartItemCount = 0, session, onLogout }) => {
 
   //controla el menu desplegable esta abierto
@@ -17,7 +14,7 @@ const Header = ({ cartItemCount = 0, session, onLogout }) => {
   const renderAccountStatus = () => {
     if (session) {
       
-      // USUARIO LOGEADO: Muestra Nombre y Opción de Cerrar Sesión
+      // Usuario que si tiene cuenta (Muestra Nombre y Opción de Cerrar Sesión)
       const rawName = session.user?.user_metadata?.full_name || session.user.email;
       const firstName = rawName.split(' ')[0];
 
@@ -25,7 +22,7 @@ const Header = ({ cartItemCount = 0, session, onLogout }) => {
         <div className="nav-item account-item logged-in" onClick={toggleMenu}>
           <img src="/images/cuenta.png" alt="Icono de cuenta" className="nav-icon"/>
 
-          {/* 🛑 PANEL DESPLEGABLE (Visible solo cuando showMenu es true) */}
+          {/* Panel desplegable (Visible solo cuando showMenu es verdadero) */}
           {showMenu && (
             <div className="account-dropdown">
               <span className="dropdown-title">Hola, {firstName}!</span>
@@ -58,7 +55,7 @@ const Header = ({ cartItemCount = 0, session, onLogout }) => {
 
     } else {
 
-      // 🛑 USUARIO NO LOGEADO: Muestra el enlace a Login/Registro
+      // Esta interfaz muestra a un usuario que no esta logeado
       return (
         <Link to={"/login"} className="nav-item account-item">
           <img src="/images/cuenta.png" alt="Icono de cuenta" className="nav-icon"/>
@@ -102,7 +99,7 @@ const Header = ({ cartItemCount = 0, session, onLogout }) => {
         </Link>
       </nav>
 
-      {/* 3. BARRA DE BÚSQUEDA (Tercer y último elemento) */}
+      {/* 3. BARRA DE BÚSQUEDA */}
       <div className="header-search">
         <input 
           type="text" 

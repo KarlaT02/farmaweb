@@ -58,7 +58,7 @@ const RegisterPanel = ({ onStartRegistration }) => {
           ¡Únete a nosotros **hoy**!
         </p>
         
-        {/* 🛑 BOTÓN DE ACCIÓN: Aquí usaremos la función para iniciar el registro */}
+        {/* Aquí usamos la función para iniciar el registro */}
         <button 
           className="auth-submit-button create-account-btn"
           onClick={onStartRegistration} 
@@ -79,4 +79,4 @@ const RegisterPanel = ({ onStartRegistration }) => {
   );
 };
 
-export default RegisterPanel; // Asegúrate de exportar RegisterPanel o cambiar el nombre a Register
+export default RegisterPanel;

@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 
 import React, { useState } from 'react';
 import "./Auth.css"; // Importa los estilos comunes
@@ -36,7 +35,7 @@ const Login = ({ isEmbedded = false}) => {
     console.log("Enviando Email:", email);
     console.log("Enviando Password:", password);
 
-    // 1. Llamar al método de inicio de sesión de Supabase
+    // 1. Llama al método de inicio de sesión de Supabase
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -47,18 +46,18 @@ const Login = ({ isEmbedded = false}) => {
 
     // 2. Manejar la respuesta
     if (error) {
-      //Mostrar un error legible al usuario
+      //Muestra un error visible al usuario
       setError("Error: Credenciales inválidas o cuenta no verificada");
       console.error("Error de Supabase:", error);
     } else if (data.user) {
-      //login exitoso supabase guarda el token
+      //al ser que el sea login exitoso supabase guarda el token
       console.log("Usuario logeado:", data.user);
       //redirige al usuario a la pagina principal
       navigate("/");
     }
   }
   
-    //Funcion para inicio de sesion con GOOGLE
+    //Funcion para inicio de sesion con GoogleE
     const handleGoogleLogin = async () => {
       setError(null); // Limpiamos errores anteriores
 
@@ -66,11 +65,10 @@ const Login = ({ isEmbedded = false}) => {
       const persistence = rememberMe ? 'session' : 'temporary';
 
       const { error } = await supabase.auth.signInWithOAuth({
-        //Especificar el proovedor
+        //Especifica el proovedor (google
         provider: "google",
         options: {
-          ///Definir URL de redirección
-          //Supabase necesita saber al donde devolver al usuario
+          ///URL de redirección
           redirectTo: window.location.origin + '/',
           /// Establecer persistencia
           redirectTo: window.location.origin + '/',
@@ -83,14 +81,12 @@ const Login = ({ isEmbedded = false}) => {
       console.error("Error al iniciar sesión con Google:", error);
       setError("Error al contactar con Google. Intente nuevamente.");
     }
-    //Si es exitoso realiza la redireccion auto
+    //Si es exitoso realiza la redireccion automaticamente
 
   };
 
   return (
       <form className="auth-form" onSubmit={handleLogin}>
-        {/* 🛑 Ocultar el h2 si está incrustado y ya hay un título general */}
-        {!isEmbedded && <h2>Iniciar Sesión</h2>}
         
         {/* Campo de Email */}
         <div className="form-group">
@@ -168,14 +164,7 @@ const Login = ({ isEmbedded = false}) => {
           >
             <img src="/images/google.png" alt="Google" className="google-icon"/>INGRESAR CON GOOGLE
           </button>
-        
-        {/*  Ocultar el enlace de "No tienes cuenta" si está incrustado */}
 
-        {!isEmbedded && (
-          <p className="auth-switch-link">
-            ¿No tienes cuenta? <a href="/registro">Regístrate aquí</a>
-          </p>
-        )}
       </form>
   );
 };

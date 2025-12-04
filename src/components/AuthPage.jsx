@@ -41,7 +41,7 @@ const AuthPage = () => {
                 {/* Columna de Crear una Cuenta (Register) */}
                 <div className="auth-form-column create-account">
                     {renderRegistrationContent()}
-                    {/* 🛑 CORRECCIÓN CLAVE: Renderizar la función dinámica aquí */}
+                    {/* coluemna de creacion de cuenta */}
                 </div> 
             </div>
 

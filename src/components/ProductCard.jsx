@@ -23,7 +23,7 @@ const ProductCard = ({ product, onAddToCart }) => {
       
       <button 
         className="btn-add-to-cart" 
-        onClick={() => onAddToCart(product)} // 👈 Llama a la función del padre
+        onClick={() => onAddToCart(product)} //Llama la función padre
       >
         Añadir a la Cesta
       </button>

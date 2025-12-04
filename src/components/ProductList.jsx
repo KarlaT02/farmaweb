@@ -8,7 +8,7 @@ const ProductList = ({ products, onAddToCart }) => {
         <ProductCard 
           key={product.id} 
           product={product} 
-          onAddToCart={onAddToCart} // 👈 Pasa la función a cada tarjeta
+          onAddToCart={onAddToCart}
         />
       ))}
     </div>
